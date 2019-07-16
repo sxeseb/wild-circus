@@ -26,7 +26,7 @@ class Booking
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Show", inversedBy="bookings")
      */
-    private $eventÃ;
+    private $spectacle;
 
     /**
      * @ORM\Column(type="datetime")
@@ -60,14 +60,14 @@ class Booking
         return $this;
     }
 
-    public function getEventÃ(): ?Show
+    public function getEventï¿½(): ?Show
     {
-        return $this->eventÃ;
+        return $this->eventï¿½;
     }
 
-    public function setEventÃ(?Show $eventÃ): self
+    public function setEventï¿½(?Show $eventï¿½): self
     {
-        $this->eventÃ = $eventÃ;
+        $this->eventï¿½ = $eventï¿½;
 
         return $this;
     }
@@ -111,6 +111,18 @@ class Booking
                 $ticket->setBooking(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSpectacle(): ?Show
+    {
+        return $this->spectacle;
+    }
+
+    public function setSpectacle(?Show $spectacle): self
+    {
+        $this->spectacle = $spectacle;
 
         return $this;
     }

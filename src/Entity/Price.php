@@ -26,12 +26,12 @@ class Price
     /**
      * @ORM\Column(type="float")
      */
-    private $price;
+    private $priceWeek;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
-    private $minPurchase;
+    private $priceWeekEnd;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Ticket", mappedBy="price")
@@ -56,30 +56,6 @@ class Price
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    public function getMinPurchase(): ?int
-    {
-        return $this->minPurchase;
-    }
-
-    public function setMinPurchase(int $minPurchase): self
-    {
-        $this->minPurchase = $minPurchase;
 
         return $this;
     }
@@ -111,6 +87,30 @@ class Price
                 $ticket->setPrice(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPriceWeek(): ?float
+    {
+        return $this->priceWeek;
+    }
+
+    public function setPriceWeek(float $priceWeek): self
+    {
+        $this->priceWeek = $priceWeek;
+
+        return $this;
+    }
+
+    public function getPriceWeekEnd(): ?float
+    {
+        return $this->priceWeekEnd;
+    }
+
+    public function setPriceWeekEnd(float $priceWeekEnd): self
+    {
+        $this->priceWeekEnd = $priceWeekEnd;
 
         return $this;
     }
