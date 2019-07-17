@@ -24,7 +24,7 @@ class Booking
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Show", inversedBy="bookings")
+     * @ORM\ManyToOne(targetEntity="Spectacle", inversedBy="bookings")
      */
     private $spectacle;
 
@@ -56,18 +56,6 @@ class Booking
     public function setUser(?User $user): self
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getEvent�(): ?Show
-    {
-        return $this->event�;
-    }
-
-    public function setEvent�(?Show $event�): self
-    {
-        $this->event� = $event�;
 
         return $this;
     }
@@ -115,12 +103,12 @@ class Booking
         return $this;
     }
 
-    public function getSpectacle(): ?Show
+    public function getSpectacle(): ?Spectacle
     {
         return $this->spectacle;
     }
 
-    public function setSpectacle(?Show $spectacle): self
+    public function setSpectacle(?Spectacle $spectacle): self
     {
         $this->spectacle = $spectacle;
 

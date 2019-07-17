@@ -26,12 +26,12 @@ class Price
     /**
      * @ORM\Column(type="float")
      */
-    private $priceWeek;
+    private $price;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="boolean")
      */
-    private $priceWeekEnd;
+    private $weekend;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Ticket", mappedBy="price")
@@ -91,26 +91,26 @@ class Price
         return $this;
     }
 
-    public function getPriceWeek(): ?float
+    public function getPrice(): ?float
     {
-        return $this->priceWeek;
+        return $this->price;
     }
 
-    public function setPriceWeek(float $priceWeek): self
+    public function setPrice(float $price): self
     {
-        $this->priceWeek = $priceWeek;
+        $this->price = $price;
 
         return $this;
     }
 
-    public function getPriceWeekEnd(): ?float
+    public function getWeekend(): ?bool
     {
-        return $this->priceWeekEnd;
+        return $this->weekend;
     }
 
-    public function setPriceWeekEnd(float $priceWeekEnd): self
+    public function setWeekend(bool $weekend): self
     {
-        $this->priceWeekEnd = $priceWeekEnd;
+        $this->weekend = $weekend;
 
         return $this;
     }
