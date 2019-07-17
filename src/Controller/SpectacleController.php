@@ -79,7 +79,7 @@ class SpectacleController extends AbstractController
             if (!array_key_exists('total', $cart)) {
                 $cart['total'] = 0;
             }
-            $cart[][] = $ticket;
+            $cart['tickets'][] = $ticket;
             $cart['total'] += $price;
             $session->set('cart', $cart);
 

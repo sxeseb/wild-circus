@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% set cart = app.session.get('cart') %}
     <div class="container">
         {% for label, messages in app.flashes %}
             <div class="alert alert-{{ label }}">
@@ -10,22 +11,55 @@
     </div>
     <div class="container py-3">
         <h1>BOOKING</h1>
-        <div class="media">
-            <img src="{{ show.image[0].src }}" class="img-thumbnail mr-3" width="400px" height="180px">
-            <div class="media-body">
-                <h1>{{ show.name|title }}</h1>
-                <h3>{{ show.city }}</h3>
-                <h5><em>{{ show.date|date('d M Y') }}</em></h5>
+        <div class="row">
+            <div class="col-8 mr-2">
+                <div class="media">
+                    <img src="{{ show.image[0].src }}" class="img-thumbnail mr-3" width="400px" height="180px">
+                    <div class="media-body">
+                        <h1>{{ show.name|title }}</h1>
+                        <h3>{{ show.city }}</h3>
+                        <h5><em>{{ show.date|date('d M Y') }}</em></h5>
+                    </div>
+                </div>
+
+                {{ form_start(form) }}
+                <div class="form-row jsutify-content-between">
+                    {{ form_row(form.price) }}
+                    {{ form_row(form.quantity) }}
+                    {{ form_row(form._token) }}
+                    <button class="btn btn-dark align-self-center mx-3 mt-3">Add to cart</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-3">
+                <div class="card custom-card">
+                    <div class="card-body">
+                        <h4>Cart</h4>
+                        <table class="table">
+                            <tbody>
+                            {% if cart is not empty %}
+                                {% for ticket in cart.tickets %}
+                                    <tr>
+                                        <td>{{ ticket.price.name}}</td>
+                                        <td class="text-center">{{ ticket.quantity }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <hr>
+                        {% if cart.total is not empty %}
+                            <p>total : {{ cart.total }} €</p>
+                        {% endif %}
+                        <div class="row justify-content-between px-3">
+                            <a href="{{ path("cart_clear")}}" class="btn btn-danger">Clear</a>
+                            <a href="{{ path("cart")}}" class="btn btn-dark">Proceed</a>
+                        </div>
+                        {% else %}
+                            <p>Empty cart !</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
-
-        {{ form_start(form) }}
-        <div class="form-row jsutify-content-between">
-            {{ form_row(form.price) }}
-            {{ form_row(form.quantity) }}
-            {{ form_row(form._token) }}
-            <button class="btn btn-dark align-self-center mx-3 mt-3">Add to cart</button>
-        </div>
-        {{ form_start(form) }}
     </div>
 {% endblock %}
