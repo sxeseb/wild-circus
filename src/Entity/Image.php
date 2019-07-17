@@ -29,7 +29,7 @@ class Image
     private $src;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Show", mappedBy="image")
+     * @ORM\ManyToMany(targetEntity="Spectacle", mappedBy="image")
      */
     private $shows;
 
@@ -68,14 +68,14 @@ class Image
     }
 
     /**
-     * @return Collection|Show[]
+     * @return Collection|Spectacle[]
      */
     public function getShows(): Collection
     {
         return $this->shows;
     }
 
-    public function addShow(Show $show): self
+    public function addShow(Spectacle $show): self
     {
         if (!$this->shows->contains($show)) {
             $this->shows[] = $show;
@@ -85,7 +85,7 @@ class Image
         return $this;
     }
 
-    public function removeShow(Show $show): self
+    public function removeShow(Spectacle $show): self
     {
         if ($this->shows->contains($show)) {
             $this->shows->removeElement($show);

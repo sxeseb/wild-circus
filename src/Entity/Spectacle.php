@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ShowRepository")
  */
-class Show
+class Spectacle
 {
     /**
      * @ORM\Id()
@@ -17,6 +17,11 @@ class Show
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,7 +44,7 @@ class Show
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="eventÃ")
+     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="spectacle")
      */
     private $bookings;
 
@@ -47,6 +52,11 @@ class Show
      * @ORM\ManyToMany(targetEntity="App\Entity\Image", inversedBy="shows")
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
 
     public function __construct()
     {
@@ -119,7 +129,7 @@ class Show
     {
         if (!$this->bookings->contains($booking)) {
             $this->bookings[] = $booking;
-            $booking->setEventÃ($this);
+            $booking->setEventï¿½($this);
         }
 
         return $this;
@@ -130,8 +140,8 @@ class Show
         if ($this->bookings->contains($booking)) {
             $this->bookings->removeElement($booking);
             // set the owning side to null (unless already changed)
-            if ($booking->getEventÃ() === $this) {
-                $booking->setEventÃ(null);
+            if ($booking->getEventï¿½() === $this) {
+                $booking->setEventï¿½(null);
             }
         }
 
@@ -160,6 +170,30 @@ class Show
         if ($this->image->contains($image)) {
             $this->image->removeElement($image);
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

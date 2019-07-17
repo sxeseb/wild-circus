@@ -22,3 +22,17 @@ body {
 .bg-orange {
     background-color: #B56D25;
 }
+
+.events img {
+    position: relative;
+    z-index: 1;
+}
+
+.banner {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    left: 6%;
+    background-color:rgba(0, 0, 0, 0.5);
+    width: 94%;
+}

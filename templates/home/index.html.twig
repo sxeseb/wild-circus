@@ -18,9 +18,13 @@
     </div>
     <div class="row justify-content-center next-show">
         <div class="card custom-card bg-orange text-white">
-            <div class="card-body text-center">
-                <h4>Next show : </h4>
-                <a href="" class="btn btn-dark">Book</a>
+            <div class="card-body">
+                {{ form_start(search) }}
+                    {{ form_row(search.search) }}
+                <div class="text-center">
+                    <button class="btn btn-dark">Find a show near me</button>
+                </div>
+                {{ form_end(search) }}
             </div>
         </div>
     </div>
@@ -37,16 +41,18 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <hr>
+            <div class="row mb-3">
                 <div class="col-12 col-sm-8 text-justify">
                     <div class="card-body">
-                        <h2>The Circus</h2>
+                        <h1>THE CIRCUS</h1>
                         <h4>400 shows, 40 cities, 12 countries and counting...</h4>
                         <p>Today the Wild Circus is strong of its success and is growing bigger every season. Our talent scouts are going around the world to find the best artists and bring them together to work on the biggest circus show ever created: <strong>"The Wildest Hour"</strong>.</p>
                         <p>This incredible tour will soon be near you and is already sold out for 4 out of 6 German shows. Better get ready !
                         </p>
                     </div>
                 </div>
+                <hr>
                 <div class="col-12 col-sm-4 custom-card">
                     <div class="card-body">
                         <h3>AWARDS</h3>
@@ -78,11 +84,23 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-around">
-                <!-- events -->
+            <hr>
+            <h1>SHOWS</h1>
+            <div class="row justify-content-center events py-4">
+                {% for show in shows|slice(0, 6) %}
+                    <div class="col-12 col-sm-5 mb-2">
+                        <img class="img-thumbnail" src="{{ show.image[0].src }}">
+                        <div class="banner row justify-content-between p-3 text-white">
+                            <div>
+                                <p class="mb-0">{{ show.name|title }}</p>
+                                <em>{{ show.city }}</em>
+                            </div>
+                            <a href="{{ path('book_show', {'id' :  (show.id) }) }}" class="btn btn-dark bg-orange mr-2 align-self-center">Book</a>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-
     </section>
 
 {% endblock %}
