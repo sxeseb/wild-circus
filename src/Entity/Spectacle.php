@@ -44,7 +44,7 @@ class Spectacle
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="event�")
+     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="spectacle")
      */
     private $bookings;
 

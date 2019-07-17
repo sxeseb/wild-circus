@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container py-3">
+        {% if city is not empty %}
+            <h1>Upcoming shows in {{ city|title }}</h1>
+        {% else %}
+            <h1>All shows</h1>
+        {% endif %}
+        <div class="row justify-content-center events py-4">
+            {% for show in shows %}
+                <div class="col-12 col-sm-5 mb-2">
+                    <img class="img-thumbnail" src="{{ show.image[0].src }}">
+                    <div class="banner row justify-content-between p-3 text-white">
+                        <div>
+                            <p class="mb-0">{{ show.name|title }}</p>
+                            <em>{{ show.city }}</em>
+                        </div>
+                        <a href="{{ path('book_show', {'id' :  (show.id) }) }}" class="btn btn-dark bg-orange mr-2 align-self-center">Book</a>
+                    </div>
+                </div>
+                {% else %}
+                    <div class="py-5 text-center">
+                        <h1>We're not there yet !</h1>
+                        <h2 class="col-12">Theres'no show in {{ city|title }} for now !</h2>
+                        <p>Keep me informed <a href="">via email</a> !</p>
+                    </div>
+                    <div class="col-12">
+                        <a href="{{ path('browse_show') }}" class="btn btn-dark">All shows</a>
+                    </div>
+            {% endfor %}
+        </div>
+        <h1>Find another show</h1>
+        <div class="row justify-content-center">
+            <div class="card custom-card bg-orange text-white">
+                <div class="card-body text-center">
+                    {{ form_start(search) }}
+                    {{ form_widget(search) }}
+                    <button class="btn btn-dark">Find a show near me</button>
+                    {{ form_end(search) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
