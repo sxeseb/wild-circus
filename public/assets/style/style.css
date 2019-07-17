@@ -1,0 +1,24 @@
+body {
+    overflow-x : hidden;
+}
+
+.carousel {
+    position: relative !important;
+    z-index:1;
+}
+.next-show {
+    position: relative;
+    top: -60px;
+    z-index: 2;
+}
+
+.custom-card {
+    border-radius: 0;
+    border: none;
+    background-color:#efead7;
+    box-shadow: 0px 10px 0px -4px #c4bb9b;
+}
+
+.bg-orange {
+    background-color: #B56D25;
+}

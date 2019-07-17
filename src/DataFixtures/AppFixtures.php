@@ -25,6 +25,7 @@ class AppFixtures extends Fixture
             $prix->setPriceWeekEnd($price[2]);
             $manager->persist($prix);
         }
+
         $manager->flush();
     }
 }
