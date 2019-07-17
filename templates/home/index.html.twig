@@ -19,8 +19,10 @@
     <div class="row justify-content-center next-show">
         <div class="card custom-card bg-orange text-white">
             <div class="card-body text-center">
-                <h4>Next show : </h4>
-                <a href="" class="btn btn-dark">Book</a>
+                {{ form_start(search) }}
+                    {{ form_widget(search) }}
+                    <button class="btn btn-dark">Find a show near me</button>
+                {{ form_end(search) }}
             </div>
         </div>
     </div>
@@ -37,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12 col-sm-8 text-justify">
                     <div class="card-body">
                         <h2>The Circus</h2>
@@ -78,11 +80,22 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-around">
-                <!-- events -->
+            <h1>SHOWS</h1>
+            <div class="row justify-content-center events py-4">
+                {% for show in shows|slice(0, 6) %}
+                    <div class="col-12 col-sm-5 mb-2">
+                        <img class="img-thumbnail" src="{{ show.image[0].src }}">
+                        <div class="banner row justify-content-between p-3 text-white">
+                            <div>
+                                <p class="mb-0">{{ show.name|title }}</p>
+                                <em>{{ show.city }}</em>
+                            </div>
+                            <a href="{{ path('book_show', {'id' :  (show.id) }) }}" class="btn btn-dark bg-orange mr-2 align-self-center">Book</a>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-
     </section>
 
 {% endblock %}
