@@ -18,10 +18,12 @@
     </div>
     <div class="row justify-content-center next-show">
         <div class="card custom-card bg-orange text-white">
-            <div class="card-body text-center">
+            <div class="card-body">
                 {{ form_start(search) }}
-                    {{ form_widget(search) }}
+                    {{ form_row(search.search) }}
+                <div class="text-center">
                     <button class="btn btn-dark">Find a show near me</button>
+                </div>
                 {{ form_end(search) }}
             </div>
         </div>
@@ -39,16 +41,18 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="row mb-3">
                 <div class="col-12 col-sm-8 text-justify">
                     <div class="card-body">
-                        <h2>The Circus</h2>
+                        <h1>THE CIRCUS</h1>
                         <h4>400 shows, 40 cities, 12 countries and counting...</h4>
                         <p>Today the Wild Circus is strong of its success and is growing bigger every season. Our talent scouts are going around the world to find the best artists and bring them together to work on the biggest circus show ever created: <strong>"The Wildest Hour"</strong>.</p>
                         <p>This incredible tour will soon be near you and is already sold out for 4 out of 6 German shows. Better get ready !
                         </p>
                     </div>
                 </div>
+                <hr>
                 <div class="col-12 col-sm-4 custom-card">
                     <div class="card-body">
                         <h3>AWARDS</h3>
@@ -80,6 +84,7 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <h1>SHOWS</h1>
             <div class="row justify-content-center events py-4">
                 {% for show in shows|slice(0, 6) %}

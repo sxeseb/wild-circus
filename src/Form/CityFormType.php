@@ -11,7 +11,9 @@ class CityFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('search')
+            ->add('search', null, [
+                'label' => 'City'
+            ])
         ;
     }
 

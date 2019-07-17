@@ -16,3 +16,9 @@ $('body')
 $('.carousel').carousel({
     interval: 3600
 })
+
+function deleteAlert() {
+    $('.alert').remove();
+}
+
+setTimeout(deleteAlert, 2000);
