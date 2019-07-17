@@ -7,7 +7,8 @@
         {% else %}
             <h1>All shows</h1>
         {% endif %}
-        <div class="row justify-content-center events py-4">
+        <div class="row">
+        <div class="col-12 col-sm-9 row justify-content-center events py-4">
             {% for show in shows %}
                 <div class="col-12 col-sm-5 mb-2">
                     <img class="img-thumbnail" src="{{ show.image[0].src }}">
@@ -30,6 +31,7 @@
                     </div>
             {% endfor %}
         </div>
+            <div class="col-12 col-sm-3">
         <h1>Find another show</h1>
         <div class="row justify-content-center">
             <div class="card custom-card bg-orange text-white">
@@ -41,6 +43,6 @@
                 </div>
             </div>
         </div>
+        </div>
     </div>
-
 {% endblock %}
